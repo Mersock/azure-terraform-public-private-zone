@@ -1,5 +1,5 @@
 variable "name_prefix" {
-  description = "Network resource names"
+  description = "network resource names"
   type        = string
 }
 
@@ -9,7 +9,7 @@ variable "location" {
 }
 
 variable "resource_group_name" {
-  description = "Name resource group"
+  description = "name resource group"
   type        = string
 }
 
@@ -26,19 +26,19 @@ variable "group_a_subnet_cidr" {
 }
 
 variable "group_b_subnet_cidr" {
-  description = "CIDR range group B subnet"
+  description = "CIDR range Group B subnet"
   type        = string
   default     = "10.10.2.0/24"
 }
 
 variable "app_gateway_subnet_cidr" {
-  description = "CIDR range app gateway subnet"
+  description = "CIDR range for Application Gateway subnet."
   type        = string
   default     = "10.10.3.0/24"
 }
 
 variable "bastion_subnet_cidr" {
-  description = "CIDR range Azure Bastion subnet"
+  description = "CIDR range for Azure Bastion subnet."
   type        = string
   default     = "10.10.4.0/26"
 }

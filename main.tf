@@ -14,9 +14,27 @@ module "network" {
   location            = module.resource_group.location
   resource_group_name = module.resource_group.name
 
-  vnet_address_space       = ["10.10.0.0/16"]
-  group_a_subnet_cidr      = "10.10.1.0/24"
-  group_b_subnet_cidr      = "10.10.2.0/24"
-  app_gateway_subnet_cidr  = "10.10.3.0/24"
-  bastion_subnet_cidr      = "10.10.4.0/26"
+  vnet_address_space      = ["10.10.0.0/16"]
+  group_a_subnet_cidr     = "10.10.1.0/24"
+  group_b_subnet_cidr     = "10.10.2.0/24"
+  app_gateway_subnet_cidr = "10.10.3.0/24"
+  bastion_subnet_cidr     = "10.10.4.0/26"
+}
+
+module "nsg" {
+  source = "./modules/nsg"
+
+  project_name        = var.project_name
+  location            = module.resource_group.location
+  resource_group_name = module.resource_group.name
+
+  group_a_subnet_id = module.network.group_a_subnet_id
+  group_b_subnet_id = module.network.group_b_subnet_id
+
+  group_a_subnet_address_prefix      = module.network.group_a_subnet_address_prefix
+  group_b_subnet_address_prefix      = module.network.group_b_subnet_address_prefix
+  app_gateway_subnet_address_prefix  = module.network.app_gateway_subnet_address_prefix
+  bastion_subnet_address_prefix      = module.network.bastion_subnet_address_prefix
+
+  tags = var.tags
 }

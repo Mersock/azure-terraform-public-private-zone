@@ -10,7 +10,7 @@ module "resource_group" {
 module "network" {
   source = "./modules/network"
 
-  name_prefix         = "terraform-public-private-zone"
+  name_prefix         = var.name_prefix
   location            = module.resource_group.location
   resource_group_name = module.resource_group.name
 
@@ -42,9 +42,30 @@ module "nsg" {
 module "bastion" {
   source = "./modules/bastion"
 
-  resource_group_name     = module.resource_group.name
-  location                = module.resource_group.location
-  bastion_name            = "bas-${var.project_name}"
-  bastion_public_ip_name  = "pip-bas-${var.project_name}"
-  bastion_subnet_id       = module.network.bastion_subnet_id
+  resource_group_name    = module.resource_group.name
+  location               = module.resource_group.location
+  bastion_name           = "bas-${var.project_name}"
+  bastion_public_ip_name = "pip-bas-${var.project_name}"
+  bastion_subnet_id      = module.network.bastion_subnet_id
+}
+
+module "compute" {
+  source = "./modules/compute"
+
+  name_prefix         = var.name_prefix
+  location            = module.resource_group.location
+  resource_group_name = module.resource_group.name
+
+  group_a_subnet_id = module.network.group_a_subnet_id
+  group_b_subnet_id = module.network.group_b_subnet_id
+
+  admin_username        = var.admin_username
+  admin_ssh_public_keys = var.admin_ssh_public_keys
+
+  tags = var.tags
+
+  depends_on = [
+    module.nsg,
+    module.bastion
+  ]
 }

@@ -29,8 +29,8 @@ variable "resource_group_name" {
 variable "tags" {
   description = "Tags resources"
   type        = map(string)
-  default     = {
-      project     = "terraform-public-private-zone"
-      managed_by  = "terraform"
+  default = {
+    project    = "terraform-public-private-zone"
+    managed_by = "terraform"
   }
 }

@@ -31,10 +31,10 @@ module "nsg" {
   group_a_subnet_id = module.network.group_a_subnet_id
   group_b_subnet_id = module.network.group_b_subnet_id
 
-  group_a_subnet_address_prefix      = module.network.group_a_subnet_address_prefix
-  group_b_subnet_address_prefix      = module.network.group_b_subnet_address_prefix
-  app_gateway_subnet_address_prefix  = module.network.app_gateway_subnet_address_prefix
-  bastion_subnet_address_prefix      = module.network.bastion_subnet_address_prefix
+  group_a_subnet_address_prefix     = module.network.group_a_subnet_address_prefix
+  group_b_subnet_address_prefix     = module.network.group_b_subnet_address_prefix
+  app_gateway_subnet_address_prefix = module.network.app_gateway_subnet_address_prefix
+  bastion_subnet_address_prefix     = module.network.bastion_subnet_address_prefix
 
   tags = var.tags
 }

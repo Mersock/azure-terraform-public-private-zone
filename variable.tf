@@ -19,3 +19,13 @@ variable "project_name" {
   type        = string
   default     = "terraform-public-private-zone"
 }
+
+variable "resource_group_name" {
+  description = "Resource group"
+  type        = string
+}
+variable "tags" {
+  description = "Tags resources"
+  type        = map(string)
+  default     = {}
+}

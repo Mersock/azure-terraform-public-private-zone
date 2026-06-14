@@ -38,3 +38,13 @@ module "nsg" {
 
   tags = var.tags
 }
+
+module "bastion" {
+  source = "./modules/bastion"
+
+  resource_group_name     = module.resource_group.name
+  location                = module.resource_group.location
+  bastion_name            = "bas-${var.project_name}"
+  bastion_public_ip_name  = "pip-bas-${var.project_name}"
+  bastion_subnet_id       = module.network.bastion_subnet_id
+}

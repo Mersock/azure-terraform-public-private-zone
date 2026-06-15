@@ -9,6 +9,8 @@
 ![rchitecture](flow/azure-public-private-zone.jpg)
 
 ## How to work
+## NOTE! Sometims Quotas of Azure Virtual Machine size might be facing limit. Check out the official website at [Azure](https://learn.microsoft.com/en-us/azure/aks/quotas-skus-regions).
+
 
 Predefined terraform.tfvars variable
 ```

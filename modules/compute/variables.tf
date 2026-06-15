@@ -36,13 +36,35 @@ variable "admin_ssh_public_keys" {
 variable "group_a_vm_size" {
   description = "Memory VM size Group A"
   type        = string
-  default     = "Standard_B2ms"
+  default     = "Standard_D2s_v3"
+}
+
+variable "group_a_instance_count" {
+  description = "Number of Group A virtual machines"
+  type        = number
+  default     = 1
+
+  validation {
+    condition     = var.group_a_instance_count > 0
+    error_message = "group_a_instance_count must be greater than zero."
+  }
 }
 
 variable "group_b_vm_size" {
   description = "CPU VM size Group B"
   type        = string
-  default     = "Standard_B1ms"
+  default     = "Standard_D2s_v3"
+}
+
+variable "group_b_instance_count" {
+  description = "Number of Group B virtual machines"
+  type        = number
+  default     = 1
+
+  validation {
+    condition     = var.group_b_instance_count > 0
+    error_message = "group_b_instance_count must be greater than zero."
+  }
 }
 
 variable "tags" {

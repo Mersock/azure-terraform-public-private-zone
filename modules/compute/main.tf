@@ -1,5 +1,5 @@
 resource "azurerm_network_interface" "group_a" {
-  count = 3
+  count = var.group_a_instance_count
 
   name                = "${var.name_prefix}-group-a-nic-${count.index + 1}"
   location            = var.location
@@ -15,7 +15,7 @@ resource "azurerm_network_interface" "group_a" {
 }
 
 resource "azurerm_network_interface" "group_b" {
-  count = 3
+  count = var.group_b_instance_count
 
   name                = "${var.name_prefix}-group-b-nic-${count.index + 1}"
   location            = var.location
@@ -31,7 +31,7 @@ resource "azurerm_network_interface" "group_b" {
 }
 
 resource "azurerm_linux_virtual_machine" "group_a" {
-  count = 3
+  count = var.group_a_instance_count
 
   name                = "${var.name_prefix}-group-a-vm-${count.index + 1}"
   computer_name       = "group-a-vm-${count.index + 1}"
@@ -75,7 +75,7 @@ resource "azurerm_linux_virtual_machine" "group_a" {
 }
 
 resource "azurerm_linux_virtual_machine" "group_b" {
-  count = 3
+  count = var.group_b_instance_count
 
   name                = "${var.name_prefix}-group-b-vm-${count.index + 1}"
   computer_name       = "group-b-vm-${count.index + 1}"

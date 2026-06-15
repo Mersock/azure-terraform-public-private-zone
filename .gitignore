@@ -45,3 +45,4 @@ terraform.rc
 
 env.sh
 .generated-certs/
+.DS_store

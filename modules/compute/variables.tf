@@ -36,13 +36,13 @@ variable "admin_ssh_public_keys" {
 variable "group_a_vm_size" {
   description = "Memory VM size Group A"
   type        = string
-  default     = "Standard_E2s_v5"
+  default     = "Standard_B2ms"
 }
 
 variable "group_b_vm_size" {
   description = "CPU VM size Group B"
   type        = string
-  default     = "Standard_F2s_v2"
+  default     = "Standard_B1ms"
 }
 
 variable "tags" {

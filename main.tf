@@ -69,3 +69,24 @@ module "compute" {
     module.bastion
   ]
 }
+
+module "application_gateway" {
+  source = "./modules/application_gateway"
+
+  name_prefix         = var.name_prefix
+  resource_group_name = module.resource_group.name
+  location            = module.resource_group.location
+
+  app_gateway_subnet_id        = module.network.app_gateway_subnet_id
+  group_b_private_ip_addresses = module.compute.group_b_private_ip_addresses
+
+  ssl_certificate_password    = var.app_gateway_ssl_certificate_password
+  self_signed_cert_common_name = "test-appgw.local"
+
+  backend_port     = 443
+  backend_protocol = "Https"
+
+  public_ip_domain_name_label = "${var.name_prefix}-appgw"
+
+  tags = var.tags
+}

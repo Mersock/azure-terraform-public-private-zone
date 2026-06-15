@@ -49,6 +49,12 @@ variable "admin_username" {
 }
 
 variable "admin_ssh_public_keys" {
-  description = "List of SSH public keys for DevOps users/laptops"
+  description = "List of SSH public keys from users"
   type        = list(string)
+}
+
+variable "app_gateway_ssl_certificate_password" {
+  description = "Password for the generated Application Gateway self-signed"
+  type        = string
+  sensitive   = true
 }
